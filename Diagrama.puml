@@ -1,0 +1,76 @@
+@startuml
+class Ventilador{
++SeleccionarNivel(Nivel)
+}
+class Asteroide
+class Nave
+class Colision
+class Proyectil
+class Puntaje
+class PowerUp
+class Menu
+class Escudo
+class Vida
+class Nivel
+class Jugador
+class Movimiento
+class JuegoAsteroids
+class Posicion
+class Tiempo
+class NaveEnemiga
+class Fondo
+class DisparoEnemigo
+class Control
+class Explosion
+class Sonido
+class Particula
+class Imagen
+class Estrella
+class Combustible
+class Direccion
+class Velocidad
+class Planeta
+class Enemigo
+class Musica
+
+JuegoAsteroids "1"*--"*" Nivel
+JuegoAsteroids *-- Menu
+JuegoAsteroids *-- Puntaje
+JuegoAsteroids *-- Fondo
+JuegoAsteroids*--Tiempo
+JuegoAsteroids "1"*--"*" Sonido
+JuegoAsteroids*-- Musica
+JuegoAsteroids*--Jugador
+Jugador*--Nave
+Jugadoro--Control
+JuegoAsteroids"1"*--"*"PowerUp
+JuegoAsteroids*--Control
+Nave*-- Escudo
+Nave*--Vida
+Nave*--Posicion
+Nave*--Movimiento
+Nave"1" o--"*" Direccion
+Nave"1" o--"1,2" Velocidad
+Nave o-- Combustible
+Nave"1" o--"*" Proyectil
+Nave"1"*--"*"PowerUp
+JuegoAsteroids"1" *-- "*" Enemigo
+Enemigo--|>NaveEnemiga
+NaveEnemiga*--Posicion
+NaveEnemiga*--Movimiento
+NaveEnemiga"1" o--"*"DisparoEnemigo
+JuegoAsteroids"1"*--"*"Asteroide
+Asteroide*--Posicion
+Asteroide*--Movimiento
+Colision"*" o--"*" Proyectil
+Colision"*" o--"*" Asteroide
+Colision"*" o--"*" Nave
+Colision"*" o--"*" NaveEnemiga
+Colision"*"*--"*" Explosion
+Explosion"*"*--"*" Particula
+Nivel"1"*--"*" Estrella
+Nivel"1"*--"*" Planeta
+Fondo*--Imagen
+Musica"1" o-- "*"Sonido
+
+@enduml
