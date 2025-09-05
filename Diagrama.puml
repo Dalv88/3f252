@@ -1,38 +1,150 @@
 @startuml
 
-class Ventilador{
-+SeleccionarNivel(Nivel)
+class Nave {
+    -escudo: Escudo
+    -vida: Vida
+    -posicion: Posicion
+    -movimiento: Movimiento
+    -direcciones: Direccion
+    -velocidades: Velocidad
+    -combustible: Combustible
+    -proyectiles: Proyectil
+    +mover()
+    +disparar()
 }
-class Asteroide
-class Nave
-class Colision
-class Proyectil
-class Puntaje
-class PowerUp
 class Menu
-class Escudo
-class Vida
-class Nivel
 class Jugador
-class Movimiento
-class JuegoAsteroids
-class Posicion
-class Tiempo
-class NaveEnemiga
-class Fondo
-class DisparoEnemigo
-class Control
-class Explosion
-class Sonido
-class Particula
+class JuegoAsteroids {
+    -niveles: Nivel
+    -menu: Menu
+    -puntaje: Puntaje
+    -fondo: Fondo
+    -tiempo: Tiempo
+    -sonidos: Sonido
+    -musica: Musica
+    -jugador: Jugador
+    -control: Control
+    +iniciarJuego()
+    +terminarJuego()
+}
 class Imagen
+class Jugador {
+    -nave: Nave
+    -control: Control
+    +actualizarEstado()
+}
+
+class Control {
+    -nave: Nave
+}
+
+class Nivel {
+    -estrellas: Estrella
+    -planetas: Planeta
+}
+
+class PowerUp {
+    -tipo
+    -duracion
+}
+
+class Escudo {
+    -energia
+}
+
+class Vida {
+    -cantidad
+}
+
+class Combustible {
+    -nivelActual
+    -nivelMaximo
+}
+
+class Proyectil {
+    -posicion: Posicion
+    -movimiento: Movimiento
+}
+
+class Enemigo {
+    +atacar()
+}
+
+class NaveEnemiga {
+    -posicion: Posicion
+    -movimiento: Movimiento
+    -disparos: DisparoEnemigo
+    +atacar()
+}
+
+class DisparoEnemigo {
+    -posicion: Posicion
+    -movimiento: Movimiento
+}
+
+class Asteroide {
+    -posicion: Posicion
+    -movimiento: Movimiento
+}
+
+class Colision {
+    +detectarColisiones()
+}
+
+class Explosion {
+    -particulas: Particula
+}
+
+class Puntaje {
+    -total: int
+}
+
+class Menu {
+    +mostrar()
+    +ocultar()
+}
+
+class Fondo {
+    -imagen: Imagen
+}
+
+class Imagen {
+    -ruta
+}
+
+class Tiempo {
+    -tiempoRestante
+}
+
+class Sonido {
+    -archivo
+}
+
+class Musica {
+    -sonidos
+}
+
+class Movimiento {
+    -aceleracion
+    -rotacion
+}
+
+class Posicion {
+    -x
+    -y
+}
+
+class Direccion {
+    -angulo
+}
+
+class Velocidad {
+    -valor
+}
+
+class Particula
 class Estrella
-class Combustible
-class Direccion
-class Velocidad
 class Planeta
-class Enemigo
-class Musica
 
 JuegoAsteroids "1"*--"*" Nivel
 JuegoAsteroids *-- Menu
