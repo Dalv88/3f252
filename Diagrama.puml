@@ -1,4 +1,5 @@
 @startuml
+
 class Ventilador{
 +SeleccionarNivel(Nivel)
 }
@@ -42,8 +43,8 @@ JuegoAsteroids "1"*--"*" Sonido
 JuegoAsteroids*-- Musica
 JuegoAsteroids*--Jugador
 Jugador*--Nave
-Jugadoro--Control
-JuegoAsteroids"1"*--"*"PowerUp
+Jugador o--Control
+JuegoAsteroids"1"*--"*" PowerUp
 JuegoAsteroids*--Control
 Nave*-- Escudo
 Nave*--Vida
