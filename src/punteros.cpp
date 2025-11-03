@@ -8,44 +8,54 @@ private:
     string nombre;
     int edad;
 public:
-    string LeerNombre();
-    int LeerEdad();
+    Humano() : nombre("Sin nombre"), edad(0) {}
+    Humano(string n, int e) : nombre(n), edad(e) {}
+
+    string LeerNombre( return nombre;)
+    int LeerEdad(){ return edad;}
 };
 
 class Alumno : public Humano{
 private:
     int registro;
 public:
-    int LeerRegistro();
+    Alumno() : Humano("Alumno sin nombre", 0), registro(0) {}
+
+    Alumno(string n, int e, int r) : Humano(n, e), registro(r) {}
+
+    int LeerRegistro() { return registro; }
 };
 
 class Empleado : public Humano{
 private:
     long noEmpleado;
 public:
-    long LeerNumeroEmpleado();
+    Empleado() : Humano("Empleado sin nombre", 0), noEmpleado(0) {}
+
+    Empleado(string n, int e, long noEmp) : Humano(n, e), noEmpleado(noEmp) {}
+
+    long LeerNumeroEmpleado() { return noEmpleado; }
 };
 
 int main(int arc, char const *argv[])
 {
     Humano* humano = NULL;
-    Alumno* alumno = new Alumno();
-    Empleado* empleado = new Empleado();
+    Alumno* alumno = new Alumno("Carlos", 20, 123);
+    Empleado* empleado = new Empleado("Ana", 30, 98765);
 
     humano = alumno;
-    humano->LeerEdad();
+    cout << "Edad del alumno: " << humano->LeerEdad() << endl;
 
     humano = empleado;
-    humano->LeerEdad();
-
+    cout << "Edad del empleado: " << humano->LeerEdad() << endl;
 
     list<Humano*> listaHumanos;
+    listaHumanos.emplace_back(new Alumno("Luis", 19, 456));
+    listaHumanos.emplace_back(new Alumno("Sofia", 21, 789));
     listaHumanos.emplace_back(new Alumno());
     listaHumanos.emplace_back(new Alumno());
     listaHumanos.emplace_back(new Alumno());
-    listaHumanos.emplace_back(new Alumno());
-    listaHumanos.emplace_back(new Alumno());
-    listaHumanos.emplace_back(new Empleado());
+    listaHumanos.emplace_back(new Empleado("Mario", 40, 1001));
     listaHumanos.emplace_back(new Empleado());
     listaHumanos.emplace_back(new Empleado());
     listaHumanos.emplace_back(new Empleado());
